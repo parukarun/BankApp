@@ -32,4 +32,6 @@ a.1)Component to view
 a.2)View to Component
 
     i)Event Binding (1 direction) - (event_name)="function_name";
-    ii)Event Binding using $event - (event_name)=""function_name($event)
+    ii)Event Binding using $event - (event_name)="function_name($event)"
+    iii)Event binding using template referencing variable - #variable_name
+
