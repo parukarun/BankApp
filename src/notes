@@ -35,3 +35,36 @@ a.2)View to Component
     ii)Event Binding using $event - (event_name)="function_name($event)"
     iii)Event binding using template referencing variable - #variable_name
 
+
+b)Two way data binding (Two -  direction) - ts->html, html->ts
+
+    i)ngModel - formsModule in app.module.ts
+      -[(ngModel)]="property_name"
+
+
+2) Angular Routing - 
+       To set path for a component
+
+    {
+        path:"value",component:class_name
+    }
+eg:
+login
+
+{
+    path:'',component:LoginComponent
+},
+
+3)Dependency Injection
+
+    To share data between two dependend classes
+
+    constructor(private router:Router)
+
+    eg:- Router class - navigateByUrl is used to navigate the component
+
+4) Angular Services
+
+ To hold redundant data 
+ 
+ ng g s service_name

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -20,14 +22,10 @@ export class LoginComponent implements OnInit {
 
 //userdefined methods //(4th execution)
 
-// database
-  userDetails:any={
-    1000:{acno:1000,username:'sanil',password:1000,balance:1000},
-    1001:{acno:1001,username:'mini',password:1001,balance:1000},
-    1002:{acno:1002,username:'max',password:1002,balance:1000}
-  }
 
-  constructor() { //(1st execution)
+
+  // dependency injection
+  constructor(private router:Router, private ds:DataService) { //(1st execution)
     //it automatically invokes when the object is created
    }
 
@@ -46,22 +44,50 @@ export class LoginComponent implements OnInit {
       console.log(this.pswd);
       
     }
-    login(a:any,b:any){
+    // login(a:any,b:any){
+    //   // alert('Login clicked');
+    //   var acno=a.value;
+    //   var pswd=b.value;
+    //   var userDetails=this.userDetails;
+
+    //   if(acno in userDetails){
+    //     if(pswd==userDetails[acno]['password']){
+    //       alert('Login successful');
+    //     }else{
+    //       alert('Invalid Password');
+    //     }
+    //   }
+    //   else{
+    //     alert('Invalid user datails');
+    //   }
+    // }
+
+    login(){
       // alert('Login clicked');
-      var acno=a.value;
-      var pswd=b.value;
-      var userDetails=this.userDetails;
+      var acno=this.acno;
+      var pswd=this.pswd;
+      var userDetails=this.ds.userDetails;
 
-      if(acno in userDetails){
-        if(pswd==userDetails[acno]['password']){
-          alert('Login successful');
-        }else{
-          alert('Invalid Password');
-        }
-      }
-      else{
-        alert('Invalid user datails');
-      }
-    }
-
+const result=this.ds.login(acno,pswd)
+ if(result){
+  alert('Login successful');
+  this.router.navigateByUrl('dashboard');
+  }else{
+    alert('Login Failed');
+  }
+  
+ }
 }
+      // if(acno in userDetails){
+      //   if(pswd==userDetails[acno]['password']){
+      //     alert('Login successful');
+      //     this.router.navigateByUrl('dashboard');
+      //   }else{
+      //     alert('Invalid Password');
+      //   }
+      // }
+      // else{
+      //   alert('Invalid user datails');
+      // }
+    //}
+
