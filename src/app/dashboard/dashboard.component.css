@@ -5,3 +5,9 @@
     margin-left: 100px;
     
 }
+a{
+    text-decoration: none;
+    border: 2px solid grey;
+    margin-left: 10px;
+    color: rgb(28, 56, 57);
+}

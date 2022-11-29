@@ -1,0 +1,17 @@
+table,tr,th,td{
+    color: brown;
+    border: 2px solid grey;
+    font-size: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    padding: 15px;
+    
+}
+a{
+    text-decoration: none;
+    float: right;
+    margin-right: 630px;
+    margin-top: 20px;
+    border: 2px solid purple;
+}

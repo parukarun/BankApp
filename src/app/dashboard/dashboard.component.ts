@@ -17,7 +17,13 @@ export class DashboardComponent implements OnInit {
   pswd1='';
   amount1='';
 
-  constructor(private ds:DataService ) { }
+  // current user - login name
+
+  user="";
+
+  constructor(private ds:DataService ) {
+    this.user=this.ds.currentUser;
+   }
 
   
 
