@@ -74,6 +74,7 @@ login
 a)Component Directives(array)
 b)structural directives(table)
        1) *ngFor
+       2) *ngIf
 
 6) Angular formsModule
  a) Template Driven formsModule(first design html page & cant do validation)
@@ -82,3 +83,22 @@ b)structural directives(table)
         1)Reactive Forms
          form group,array,control
          we can directly add validation via importing reactive Form Module
+
+7)Local storage
+
+ -setItem - to store data
+ -getItem - to retrieve data
+ -removeItem - to remove data
+
+8) Parent child communication
+
+    parent  -> child
+    child -> parent
+
+eg: 
+       Dashboard -> Parent
+       delete ->Child
+
+9)Angular pipes
+
+      {{value_expression | date [ : format [ : timezone [ : locale ] ] ] }}

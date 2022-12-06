@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -23,9 +24,16 @@ export class LoginComponent implements OnInit {
 //userdefined methods //(4th execution)
 
 
-
+ // login model1
+  
+  loginForm=this.fb.group({ //group
+   
+    acno:['',[Validators.required,Validators.pattern('[0-9]*')]],
+    pswd:['',[Validators.required,Validators.pattern('[0-9a-zA-Z]*')]]
+  })
+ 
   // dependency injection
-  constructor(private router:Router, private ds:DataService) { //(1st execution)
+  constructor(private router:Router, private ds:DataService, private fb:FormBuilder) { //(1st execution)
     //it automatically invokes when the object is created
    }
 
@@ -64,18 +72,24 @@ export class LoginComponent implements OnInit {
 
     login(){
       // alert('Login clicked');
-      var acno=this.acno;
-      var pswd=this.pswd;
+       
+
+      var acno=this.loginForm.value.acno;
+      var pswd=this.loginForm.value.pswd;
       var userDetails=this.ds.userDetails;
 
-const result=this.ds.login(acno,pswd)
- if(result){
-  alert('Login successful');
-  this.router.navigateByUrl('dashboard');
-  }else{
-    alert('Login Failed');
-  }
-  
+      if(this.loginForm.valid){
+        const result=this.ds.login(acno,pswd)
+        if(result){
+           alert('Login successful');
+           this.router.navigateByUrl('dashboard');
+         }else{
+           alert('Login Failed');
+         }
+      }
+      else{
+        alert('Invalid Form');
+      }
  }
 }
       // if(acno in userDetails){

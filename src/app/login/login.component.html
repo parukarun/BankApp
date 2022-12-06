@@ -7,12 +7,22 @@
         My Bank
         <h6 class="mt-2">{{aim}}</h6>
     </div>
-    <form class="p-3 mt-3 ">
-        <div class="form-field d-flex align-items-center">
-            <input [(ngModel)]="acno" type="text" name="acno" id="login_acno" [placeholder]="account" >
+    <form [formGroup]="loginForm" class="p-3 mt-3 ">
+
+        <div *ngIf="this.loginForm.get('acno')?.errors && this.loginForm.get('acno')?.touched" style="color: red; font-size: 12px;" >
+            Invalid Account number
         </div>
+
         <div class="form-field d-flex align-items-center">
-            <input [(ngModel)]="pswd" type="password" name="password" id="login_pswd" placeholder="password">
+            <input formControlName="acno" type="text" name="acno" id="login_acno" [placeholder]="account" >
+        </div>
+
+        <div *ngIf="this.loginForm.get('pswd')?.errors && this.loginForm.get('pswd')?.touched" style="color: red; font-size: 12px;" >
+            Invalid Password
+        </div>
+
+        <div class="form-field d-flex align-items-center">
+            <input formControlName="pswd" type="password" name="password" id="login_pswd" placeholder="password">
         </div>
         <button class="btn mt-3" (click)="login()" type="button">Login</button>
 
